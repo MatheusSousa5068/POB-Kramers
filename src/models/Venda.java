@@ -14,6 +14,7 @@ public class Venda {
         this.id = id;
         this.desconto = desconto;
         this.valorpago = valorpago;
+        this.data = data;
     }
 
     public Integer getId() {
