@@ -13,7 +13,8 @@ public class TipoProduto {
     public String getNome() {
         return nome;
     }
-    public void setNome(String nome) {
+
+	public void setNome(String nome) {
         this.nome = nome;
     }
 
@@ -30,4 +31,9 @@ public class TipoProduto {
                 return p;
         return null;
     }
+    
+    @Override
+	public String toString() {
+		return "TipoProduto [nome=" + nome + ", produtos=" + produtos + "]";
+	}
 }
