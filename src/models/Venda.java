@@ -21,10 +21,6 @@ public class Venda {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getData() {
         return data;
     }
