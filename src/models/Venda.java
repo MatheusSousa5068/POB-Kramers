@@ -21,6 +21,10 @@ public class Venda {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getData() {
         return data;
     }
@@ -58,4 +62,12 @@ public class Venda {
                 return p;
         return null;
     }
+
+	@Override
+	public String toString() {
+		return "Venda [id=" + id + ", data=" + data + ", produtos=" + produtos + ", desconto=" + desconto
+				+ ", valorpago=" + valorpago + "]";
+	}
+    
+    
 }
