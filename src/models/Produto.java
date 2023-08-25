@@ -30,4 +30,11 @@ public class Produto {
     public TipoProduto getProduto() {
         return tipoproduto;
     }
+
+	@Override
+	public String toString() {
+		return "Produto [nome=" + nome + ", tipoproduto=" + tipoproduto + ", preco=" + preco + "]";
+	}
+    
+    
 }
