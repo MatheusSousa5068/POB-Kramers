@@ -13,7 +13,6 @@ public class Listar {
 	protected ObjectContainer manager;
 	
 	public Listar() {
-		System.out.println("aaa");
 		try {
 			manager = Util.conectarBanco();
 			
