@@ -1,7 +1,5 @@
 package appconsole;
 
-
-
 import java.util.List;
 
 import com.db4o.ObjectContainer;
@@ -17,8 +15,6 @@ public class Deletar {
 		manager = Util.conectarBanco();
 		apagar();
 		Util.desconectar();
-
-		System.out.println("\n\n aviso: feche sempre o plugin OME antes de executar aplica��o");
 	}
 
 	public void apagar() {
@@ -27,7 +23,6 @@ public class Deletar {
 		qChocolate.constrain(Produto.class);
 		qChocolate.descend("nome").constrain("Chocolate");
 		List<Produto> resultados1 = qChocolate.execute();
-		
 		
 		if (resultados1.size() > 0) {
 			manager.delete(resultados1.get(0));
@@ -38,8 +33,6 @@ public class Deletar {
 		} 
 		else
 			System.out.println("inexistente");
-		
-		
 		
 		// Deletar tipo de produto "doces"
 		Query qDoce = manager.query();
@@ -57,10 +50,6 @@ public class Deletar {
 		} 
 		else
 			System.out.println("inexistente");
-		
-		
-		
-		
 	}
 
 	// =================================================
