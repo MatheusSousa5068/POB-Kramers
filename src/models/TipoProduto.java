@@ -31,9 +31,15 @@ public class TipoProduto {
                 return p;
         return null;
     }
+  
     
     @Override
 	public String toString() {
-		return "TipoProduto [nome=" + nome + ", produtos=" + produtos + "]";
+    	String texto = "TipoProduto [nome=" + nome + "] produtos: [";
+    	for(Produto p: produtos) {
+    		texto += p.getNome() + " ";
+    	}
+    	texto += "]";
+    	return texto;
 	}
 }
