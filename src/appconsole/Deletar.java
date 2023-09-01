@@ -7,6 +7,7 @@ import com.db4o.query.Query;
 
 import models.Produto;
 import models.TipoProduto;
+import models.Venda;
 
 public class Deletar {
 	protected ObjectContainer manager;
@@ -14,6 +15,7 @@ public class Deletar {
 	public Deletar() {
 		manager = Util.conectarBanco();
 		apagar();
+		//apagarTudo();
 		Util.desconectar();
 	}
 
@@ -50,6 +52,54 @@ public class Deletar {
 		} 
 		else
 			System.out.println("inexistente");
+	}
+	
+	public void apagarTudo() {
+		// Deletar todos os produtos
+		Query qProdutos = manager.query();
+		qProdutos.constrain(Produto.class);
+		List<Produto> resultadosProdutos = qProdutos.execute();
+		
+		if (resultadosProdutos.size() > 0) {
+			for (Produto p: resultadosProdutos) {
+				manager.delete(p);
+				manager.commit();
+			}
+			System.out.println("apagou todos os produtos");
+		} else {
+			System.out.println("produtos inexistentes");
+		}
+		
+		// Deletar todos os tipos de produtos
+		Query qTiposProdutos = manager.query();
+		qTiposProdutos.constrain(TipoProduto.class);
+		List<TipoProduto> resultadosTiposProdutos = qTiposProdutos.execute();
+				
+		if (resultadosTiposProdutos.size() > 0) {
+			for (TipoProduto tp: resultadosTiposProdutos) {
+				manager.delete(tp);
+				manager.commit();
+			}
+			System.out.println("apagou todos os tipos de produtos");
+		} else {
+			System.out.println("tipos de produtos inexistentes");
+		}
+		
+		// Deletar todas as vendas
+		Query qVendas = manager.query();
+		qVendas.constrain(Venda.class);
+		List<Venda> resultadosVendas = qVendas.execute();
+				
+		if (resultadosVendas.size() > 0) {
+			for (Venda v: resultadosVendas) {
+				manager.delete(v);
+				manager.commit();
+			}
+			System.out.println("apagou todas as vendas");
+		} else {
+			System.out.println("vendas inexistentes");
+		}
+		
 	}
 
 	// =================================================
