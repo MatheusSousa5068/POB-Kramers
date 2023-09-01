@@ -1,6 +1,9 @@
 package appconsole;
 
+import java.util.List;
+
 import com.db4o.ObjectContainer;
+import com.db4o.query.Query;
 
 import models.Produto;
 //import models.TipoProduto;
@@ -46,6 +49,30 @@ public class Alterar {
                 this.manager.store(venda2);
                 this.manager.commit();
             }
+           
+            System.out.println("Venda de coca-cola e chocolate");
+
+            Query q3 = this.manager.query();
+            q3.constrain(Produto.class);
+            q3.descend("nome").constrain("Coca-cola");
+            List<Produto> resultados3 = q3.execute();
+           
+            Query q4 = this.manager.query();
+            q4.constrain(Produto.class);
+            q4.descend("nome").constrain("Chocolate");
+            List<Produto> resultados4 = q4.execute();
+
+            if (resultados3.size() > 0 && resultados4.size() > 0) {
+            Produto cocacola2 = (Produto)resultados3.get(0);
+            Produto chocolate2 = (Produto)resultados4.get(0);
+                Venda venda3 = new Venda("03/09/2023", 1.50, 7.00);
+                int id = Util.gerarIdVenda();
+                venda3.setId(id);
+                venda3.adicionar(cocacola2);
+                venda3.adicionar(chocolate2);
+                this.manager.store(venda3);
+                this.manager.commit();
+            }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -54,7 +81,7 @@ public class Alterar {
         Util.desconectar();
         System.out.println("\nfim do programa !");
     }
-}
+
 
     public static void main(String[] args) {
         new Alterar();
