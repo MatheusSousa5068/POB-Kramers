@@ -10,8 +10,7 @@ public class Venda {
     private double desconto;
     private double valorpago;
 
-    public Venda(Integer id, String data, double desconto, double valorpago) {
-        this.id = id;
+    public Venda(String data, double desconto, double valorpago) {
         this.desconto = desconto;
         this.valorpago = valorpago;
         this.data = data;
@@ -63,11 +62,11 @@ public class Venda {
         return null;
     }
 
-	@Override
-	public String toString() {
-		return "Venda [id=" + id + ", data=" + data + ", produtos=" + produtos + ", desconto=" + desconto
-				+ ", valorpago=" + valorpago + "]";
-	}
-    
-    
+    @Override
+    public String toString() {
+        return "Venda [id=" + id + ", data=" + data + ", produtos=" + produtos + ", desconto=" + desconto
+                + ", valorpago=" + valorpago + "]";
+    }
+
+
 }
