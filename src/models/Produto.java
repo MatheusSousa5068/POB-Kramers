@@ -33,7 +33,7 @@ public class Produto {
 
 	@Override
 	public String toString() {
-		return "Produto [nome=" + nome + ", tipoproduto=" + tipoproduto + ", preco=" + preco + "]";
+		return "Produto [nome=" + nome + ", tipoproduto=" + tipoproduto.getNome() + ", preco=" + preco + "]";
 	}
     
     
