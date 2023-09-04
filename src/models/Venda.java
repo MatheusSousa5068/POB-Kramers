@@ -8,7 +8,9 @@ public class Venda {
     private String data;
     private List<Produto> produtos = new ArrayList<>();
     private double desconto;
-    private double valorpago;
+   
+
+	private double valorpago;
 
     public Venda(String data, double desconto, double valorpago) {
         this.desconto = desconto;
@@ -61,12 +63,14 @@ public class Venda {
                 return p;
         return null;
     }
+    
+    public List<Produto> getProdutos() {
+		return produtos;
+	}
 
     @Override
     public String toString() {
         return "Venda [id=" + id + ", data=" + data + ", produtos=" + produtos + ", desconto=" + desconto
                 + ", valorpago=" + valorpago + "]";
     }
-
-
 }
