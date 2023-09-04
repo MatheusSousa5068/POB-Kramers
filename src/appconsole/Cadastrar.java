@@ -4,7 +4,6 @@ import com.db4o.ObjectContainer;
 
 import models.Produto;
 import models.TipoProduto;
-//import models.Venda;
 
 public class Cadastrar {
 	protected ObjectContainer manager;
@@ -27,14 +26,17 @@ public class Cadastrar {
 			manager.commit();
 			
 			Produto produto1 = new Produto("Cheetos", 3.50, tipoproduto1);
+			tipoproduto1.adicionar(produto1);
 			manager.store(produto1);
 			manager.commit();
 			
 			Produto produto2 = new Produto("Coca-cola", 5.00, tipoproduto2);
+			tipoproduto2.adicionar(produto2);
 			manager.store(produto2);
 			manager.commit();
 			
 			Produto produto3 = new Produto("Chocolate", 4.00, tipoproduto3);
+			tipoproduto3.adicionar(produto3);
 			manager.store(produto3);
 			manager.commit();
 			
@@ -50,4 +52,3 @@ public class Cadastrar {
 		new Cadastrar();
 	}
 }
-
