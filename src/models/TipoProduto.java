@@ -24,8 +24,13 @@ public class TipoProduto {
     public void remover(Produto p){
         produtos.remove(p);
     }
+    
 
-    public Produto localizar(String nome){
+    public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public Produto localizar(String nome){
         for(Produto p: produtos)
             if (p.getNome().equals(nome))
                 return p;
