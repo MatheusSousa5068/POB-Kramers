@@ -3,6 +3,8 @@ package appconsole;
 import java.util.List;
 
 import com.db4o.ObjectContainer;
+import com.db4o.query.Candidate;
+import com.db4o.query.Evaluation;
 import com.db4o.query.Query;
 
 import models.Produto;
@@ -15,7 +17,7 @@ public class Deletar {
 	public Deletar() {
 		manager = Util.conectarBanco();
 		apagar();
-		//apagarTudo();
+//		apagarTudo();
 		Util.desconectar();
 	}
 
@@ -27,7 +29,18 @@ public class Deletar {
 		List<Produto> resultados1 = qChocolate.execute();
 		
 		if (resultados1.size() > 0) {
-			manager.delete(resultados1.get(0));
+			Produto c = resultados1.get(0);
+			
+			Query qVendasComChocolate = manager.query();
+			qVendasComChocolate.constrain(Venda.class);
+			qVendasComChocolate.constrain(new FiltroPossuiProduto(c));
+			List<Venda> resultadosVenda = qVendasComChocolate.execute();
+			for(Venda v: resultadosVenda) {
+				v.remover(c);
+				manager.store(v);
+			}
+			
+			manager.delete(c);
 			manager.commit();
 
 			
@@ -105,5 +118,25 @@ public class Deletar {
 	// =================================================
 	public static void main(String[] args) {
 		new Deletar();
+	}
+}
+
+
+class FiltroPossuiProduto implements Evaluation {
+	private Produto p;
+
+	public FiltroPossuiProduto(Produto p) {
+		this.p = p;
+	}
+
+	public void evaluate(Candidate candidate) {
+		Venda v = (Venda) candidate.getObject();
+		candidate.include(false);
+		for (Produto pr : v.getProdutos()) {
+			if (pr.getNome().equals(p.getNome())) {
+				candidate.include(true);
+			}
+		}
+
 	}
 }
