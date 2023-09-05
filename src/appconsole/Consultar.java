@@ -1,10 +1,3 @@
-/**********************************
- * IFPB - Curso Superior de Tec. em Sist. para Internet
- * POB - Persistencia de Objetos
- * Prof. Fausto Ayres
- *
- */
-
 package appconsole;
 
 import java.util.List;
@@ -27,11 +20,10 @@ public class Consultar {
 
 			System.out.println("consultas... \n");
 			System.out.println("\nQuais as vendas da data X");
-			Query q;
-			q = manager.query();
-			q.constrain(Venda.class);
-			q.descend("data").constrain("01/09/2023");
-			List<Venda> resultados = q.execute();
+			Query q1 = manager.query();
+			q1.constrain(Venda.class);
+			q1.descend("data").constrain("01/09/2023");
+			List<Venda> resultados = q1.execute();
 			for (Venda v : resultados)
 				System.out.println(v);
 
@@ -71,6 +63,5 @@ class FiltroQtndProdutosEmVenda implements Evaluation {
 			candidate.include(true);
 		else
 			candidate.include(false);
-
 	}
 }
