@@ -31,6 +31,18 @@ public class Deletar {
 		if (resultados1.size() > 0) {
 			Produto c = resultados1.get(0);
 			
+			resultados1.get(0).setTipoproduto(null);
+			
+			Query qTipoProdutoComChocolate = manager.query();
+			qTipoProdutoComChocolate.constrain(TipoProduto.class);
+			qTipoProdutoComChocolate.constrain(new FiltroPossuiProdutoemTipo(c));
+			List<TipoProduto> resultadosTipo = qTipoProdutoComChocolate.execute();
+			for(TipoProduto tp: resultadosTipo) {
+				tp.remover(c);
+				manager.store(tp);
+			}
+			
+			
 			Query qVendasComChocolate = manager.query();
 			qVendasComChocolate.constrain(Venda.class);
 			qVendasComChocolate.constrain(new FiltroPossuiProduto(c));
@@ -39,6 +51,7 @@ public class Deletar {
 				v.remover(c);
 				manager.store(v);
 			}
+			
 			
 			manager.delete(c);
 			manager.commit();
@@ -137,6 +150,25 @@ class FiltroPossuiProduto implements Evaluation {
 		Venda v = (Venda) candidate.getObject();
 		candidate.include(false);
 		for (Produto pr : v.getProdutos()) {
+			if (pr.getNome().equals(p.getNome())) {
+				candidate.include(true);
+			}
+		}
+
+	}
+}
+
+class FiltroPossuiProdutoemTipo implements Evaluation {
+	private Produto p;
+
+	public FiltroPossuiProdutoemTipo(Produto p) {
+		this.p = p;
+	}
+
+	public void evaluate(Candidate candidate) {
+		TipoProduto tp = (TipoProduto) candidate.getObject();
+		candidate.include(false);
+		for (Produto pr : tp.getProdutos()) {
 			if (pr.getNome().equals(p.getNome())) {
 				candidate.include(true);
 			}
