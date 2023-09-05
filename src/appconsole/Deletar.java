@@ -53,10 +53,14 @@ public class Deletar {
 		Query qDoce = manager.query();
 		qDoce.constrain(TipoProduto.class);
 		qDoce.descend("nome").constrain("Doces");
-		List<Produto> resultados2 = qDoce.execute();
+		List<TipoProduto> resultados2 = qDoce.execute();
 		
 		
 		if (resultados2.size() > 0) {
+			for(Produto p: resultados2.get(0).getProdutos()) {
+				manager.delete(p);
+			}
+			
 			manager.delete(resultados2.get(0));
 			manager.commit();
 
