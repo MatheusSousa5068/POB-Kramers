@@ -30,7 +30,7 @@ public class Consultar {
 			System.out.println("\nQuais as vendas que contem um produto de preco X");
 			Query q2 = manager.query();
 			q2.constrain(Venda.class);
-			q2.descend("produtos").descend("preco").constrain(4.0);
+			q2.descend("produtos").descend("preco").constrain(3.5);
 			List<Venda> resultados2 = q2.execute();
 			for (Venda v : resultados2)
 				System.out.println(v);
