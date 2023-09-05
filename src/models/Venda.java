@@ -35,14 +35,14 @@ public class Venda {
     }
 
     public double getValortotal() {
-		return valortotal;
-	}
+	return valortotal;
+    }
 
-	public void setValortotal(double valortotal) {
-		this.valortotal = valortotal;
-	}
+    public void setValortotal(double valortotal) {
+	this.valortotal = valortotal;
+    }
 
-	public double getDesconto() {
+    public double getDesconto() {
         return desconto;
     }
 
