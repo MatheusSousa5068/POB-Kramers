@@ -62,23 +62,19 @@ public class Deletar {
 		else
 			System.out.println("inexistente");
 		
-		// Deletar tipo de produto "doces"
-		Query qDoce = manager.query();
-		qDoce.constrain(TipoProduto.class);
-		qDoce.descend("nome").constrain("Doces");
-		List<TipoProduto> resultados2 = qDoce.execute();
+		// Deletar venda de ID 5
+		Query qVenda = manager.query();
+		qVenda.constrain(Venda.class);
+		qVenda.descend("id").constrain(5);
+		List<Venda> resultados2 = qVenda.execute();
 		
 		
 		if (resultados2.size() > 0) {
-			for(Produto p: resultados2.get(0).getProdutos()) {
-				manager.delete(p);
-			}
-			
 			manager.delete(resultados2.get(0));
 			manager.commit();
 
 			
-			System.out.println("apagou doces");
+			System.out.println("apagou venda 5");
 		} 
 		else
 			System.out.println("inexistente");
