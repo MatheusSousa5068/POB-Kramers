@@ -14,7 +14,7 @@ public class TipoProduto {
         return nome;
     }
 
-	public void setNome(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
@@ -27,10 +27,10 @@ public class TipoProduto {
     
 
     public List<Produto> getProdutos() {
-		return produtos;
-	}
+	return produtos;
+    }
 
-	public Produto localizar(String nome){
+    public Produto localizar(String nome){
         for(Produto p: produtos)
             if (p.getNome().equals(nome))
                 return p;
@@ -39,7 +39,7 @@ public class TipoProduto {
   
     
     @Override
-	public String toString() {
+    public String toString() {
     	String texto = "TipoProduto [nome=" + nome + "] produtos: [";
     	for(Produto p: produtos) {
     		texto += p.getNome() + " ";
