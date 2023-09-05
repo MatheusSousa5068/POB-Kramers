@@ -76,6 +76,62 @@ public class Alterar {
 				this.manager.commit();
 			}
 
+			System.out.println("Venda de cheetos, coca-cola e gelatina");
+
+			Query q5 = this.manager.query();
+			q5.constrain(Produto.class);
+			q5.descend("nome").constrain("Cheetos");
+			List<Produto> resultados5 = q5.execute();
+			
+			Query q6 = this.manager.query();
+			q6.constrain(Produto.class);
+			q6.descend("nome").constrain("Coca-cola");
+			List<Produto> resultados6 = q6.execute();
+			
+			Query q7 = this.manager.query();
+			q7.constrain(Produto.class);
+			q7.descend("nome").constrain("Gelatina de Morango");
+			List<Produto> resultados7 = q7.execute();
+			
+			if (resultados5.size() > 0 && resultados6.size() > 0 && resultados7.size() > 0) {
+			    Produto cheetos = (Produto) resultados5.get(0);
+			    Produto cocacola = (Produto) resultados6.get(0);
+			    Produto gelatina = (Produto) resultados7.get(0);
+			
+			    Venda venda4 = new Venda("05/09/2023", 3);
+			    int id4 = Util.gerarIdVenda();
+			    venda4.setId(id4);
+			    venda4.adicionar(cheetos);
+			    venda4.adicionar(cocacola);
+			    venda4.adicionar(gelatina);
+			    this.manager.store(venda4);
+			    this.manager.commit();
+			}
+
+			System.out.println("Venda de pizza congelada e água mineral");
+
+			Query q9 = this.manager.query();
+			q9.constrain(Produto.class);
+			q9.descend("nome").constrain("Pizza Congelada");
+			List<Produto> resultados9 = q9.execute();
+			
+			Query q10 = this.manager.query();
+			q10.constrain(Produto.class);
+			q10.descend("nome").constrain("Água Mineral");
+			List<Produto> resultados10 = q10.execute();
+			
+			if (resultados9.size() > 0 && resultados10.size() > 0) {
+			    Produto pizzaCongelada = (Produto) resultados9.get(0);
+			    Produto aguaMineral = (Produto) resultados10.get(0);
+			    Venda venda6 = new Venda("09/09/2023", 20); // Exemplo de data e quantidade
+			    int id = Util.gerarIdVenda();
+			    venda6.setId(id);
+			    venda6.adicionar(pizzaCongelada);
+			    venda6.adicionar(aguaMineral);
+			    this.manager.store(venda6);
+			    this.manager.commit();
+			}
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
