@@ -31,7 +31,7 @@ public class Deletar {
 		if (resultados1.size() > 0) {
 			Produto c = resultados1.get(0);
 			
-			resultados1.get(0).setTipoproduto(null);
+			c.setTipoproduto(null);
 			
 			Query qTipoProdutoComChocolate = manager.query();
 			qTipoProdutoComChocolate.constrain(TipoProduto.class);
