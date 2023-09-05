@@ -8,7 +8,6 @@ import com.db4o.query.Evaluation;
 import com.db4o.query.Query;
 
 import models.Produto;
-//import models.TipoProduto;
 import models.Venda;
 
 public class Alterar {
