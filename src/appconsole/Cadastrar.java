@@ -62,7 +62,7 @@ public class Cadastrar {
 			manager.store(produto2_2);
 			manager.commit();
 			
-			Produto produto2_3 = new Produto("Água Mineral", 2.00, tipoproduto2);
+			Produto produto2_3 = new Produto("Agua Mineral", 2.00, tipoproduto2);
 			tipoproduto2.adicionar(produto2_3);
 			manager.store(produto2_3);
 			manager.commit();
@@ -92,12 +92,12 @@ public class Cadastrar {
 			manager.store(produto4_2);
 			manager.commit();
 			
-			Produto produto4_3 = new Produto("Costela Suína", 11.75, tipoproduto4);
+			Produto produto4_3 = new Produto("Costela Suina", 11.75, tipoproduto4);
 			tipoproduto4.adicionar(produto4_3);
 			manager.store(produto4_3);
 			manager.commit();
 			
-			Produto produto5_1 = new Produto("Maçãs", 2.00, tipoproduto5);
+			Produto produto5_1 = new Produto("Macas", 2.00, tipoproduto5);
 			tipoproduto5.adicionar(produto5_1);
 			manager.store(produto5_1);
 			manager.commit();
