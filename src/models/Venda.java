@@ -8,14 +8,14 @@ public class Venda {
     private String data;
     private List<Produto> produtos = new ArrayList<>();
     private double desconto;
-   
-
+    private double valortotal;
 	private double valorpago;
 
-    public Venda(String data, double desconto, double valorpago) {
+    public Venda(String data, double desconto) {
         this.desconto = desconto;
-        this.valorpago = valorpago;
         this.data = data;
+        this.valortotal = 0.0;
+        this.valorpago = 0.0;
     }
 
     public Integer getId() {
@@ -34,7 +34,15 @@ public class Venda {
         this.data = data;
     }
 
-    public double getDesconto() {
+    public double getValortotal() {
+		return valortotal;
+	}
+
+	public void setValortotal(double valortotal) {
+		this.valortotal = valortotal;
+	}
+
+	public double getDesconto() {
         return desconto;
     }
 
@@ -52,9 +60,13 @@ public class Venda {
 
     public void adicionar(Produto p){
         produtos.add(p);
+        this.valortotal += p.getPreco();
+        this.valorpago = this.valortotal - this.desconto;
     }
     public void remover(Produto p){
         produtos.remove(p);
+        this.valortotal -= p.getPreco();
+        this.valorpago = this.valortotal - this.desconto;
     }
 
     public Produto localizar(String nome){
@@ -71,6 +83,6 @@ public class Venda {
     @Override
     public String toString() {
         return "Venda [id=" + id + ", data=" + data + ", produtos=" + produtos + ", desconto=" + desconto
-                + ", valorpago=" + valorpago + "]";
+                + ", valortotal=" + valortotal + ", valorpago=" + valorpago + "]";
     }
 }
