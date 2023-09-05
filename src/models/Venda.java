@@ -61,12 +61,13 @@ public class Venda {
     public void adicionar(Produto p){
         produtos.add(p);
         this.valortotal += p.getPreco();
-        this.valorpago = this.valortotal - this.desconto;
+        this.valorpago = this.valortotal - (this.valortotal * (this.desconto/100));
     }
     public void remover(Produto p){
         produtos.remove(p);
         this.valortotal -= p.getPreco();
-        this.valorpago = this.valortotal - this.desconto;
+
+        this.valorpago = this.valortotal - (this.valortotal * (this.desconto/100));
     }
 
     public Produto localizar(String nome){
