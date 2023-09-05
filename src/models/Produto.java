@@ -11,8 +11,16 @@ public class Produto {
         this.tipoproduto = tipoproduto;
     }
 
-    public String getNome() {
-        return nome;
+    public TipoProduto getTipoproduto() {
+		return tipoproduto;
+	}
+
+	public void setTipoproduto(TipoProduto tipoproduto) {
+		this.tipoproduto = tipoproduto;
+	}
+	
+	public String getNome() {
+	return nome;
     }
 
     public void setNome(String nome) {
@@ -25,10 +33,6 @@ public class Produto {
 
     public void setPreco(double preco) {
         this.preco = preco;
-    }
-
-    public TipoProduto getProduto() {
-        return tipoproduto;
     }
 
 	@Override
