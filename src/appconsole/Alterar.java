@@ -108,7 +108,7 @@ public class Alterar {
 			    this.manager.commit();
 			}
 
-			System.out.println("Venda de pizza congelada e água mineral");
+			System.out.println("Venda de pizza congelada e agua mineral");
 
 			Query q9 = this.manager.query();
 			q9.constrain(Produto.class);
@@ -117,7 +117,7 @@ public class Alterar {
 			
 			Query q10 = this.manager.query();
 			q10.constrain(Produto.class);
-			q10.descend("nome").constrain("Água Mineral");
+			q10.descend("nome").constrain("Agua Mineral");
 			List<Produto> resultados10 = q10.execute();
 			
 			if (resultados9.size() > 0 && resultados10.size() > 0) {
