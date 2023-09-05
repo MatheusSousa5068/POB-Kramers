@@ -26,7 +26,7 @@ public class Alterar {
 
 			if (resultados1.size() > 0) {
 				Produto chocolate = (Produto) resultados1.get(0);
-				Venda venda1 = new Venda("31/08/2023", 50);
+				Venda venda1 = new Venda("31/08/2023", 60);
 				int id = Util.gerarIdVenda();
 				venda1.setId(id);
 				venda1.adicionar(chocolate);
@@ -97,7 +97,7 @@ public class Alterar {
 			    Produto cocacola = (Produto) resultados6.get(0);
 			    Produto gelatina = (Produto) resultados7.get(0);
 			
-			    Venda venda4 = new Venda("05/09/2023", 3);
+			    Venda venda4 = new Venda("05/09/2023", 30);
 			    int id4 = Util.gerarIdVenda();
 			    venda4.setId(id4);
 			    venda4.adicionar(cheetos);
