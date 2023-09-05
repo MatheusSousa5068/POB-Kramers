@@ -15,9 +15,9 @@ public class Produto {
 		return tipoproduto;
 	}
 
-	public void setTipoproduto(TipoProduto tipoproduto) {
-		this.tipoproduto = tipoproduto;
-	}
+    public void setTipoproduto(TipoProduto tipoproduto) {
+	this.tipoproduto = tipoproduto;
+    }
 	
 	public String getNome() {
 	return nome;
@@ -35,10 +35,10 @@ public class Produto {
         this.preco = preco;
     }
 
-	@Override
-	public String toString() {
-		return "Produto [nome=" + nome + ", tipoproduto=" + tipoproduto.getNome() + ", preco=" + preco + "]";
-	}
+    @Override
+    public String toString() {
+	return "Produto [nome=" + nome + ", tipoproduto=" + tipoproduto.getNome() + ", preco=" + preco + "]";
+    }
     
     
 }
