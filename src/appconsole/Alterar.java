@@ -123,7 +123,7 @@ public class Alterar {
 			if (resultados9.size() > 0 && resultados10.size() > 0) {
 			    Produto pizzaCongelada = (Produto) resultados9.get(0);
 			    Produto aguaMineral = (Produto) resultados10.get(0);
-			    Venda venda6 = new Venda("09/09/2023", 20); // Exemplo de data e quantidade
+			    Venda venda6 = new Venda("09/09/2023", 20);
 			    int id = Util.gerarIdVenda();
 			    venda6.setId(id);
 			    venda6.adicionar(pizzaCongelada);
